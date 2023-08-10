@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "cypress-run-headed-digidok": "cypress run --headed --browser chrome"
+    "cypress-open-digidok": "cypress open --browser chrome"
   },
   "devDependencies": {
     "@cypress/webpack-preprocessor": "^5.15.7",

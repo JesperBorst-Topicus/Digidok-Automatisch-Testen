@@ -11,6 +11,9 @@ const cypressJsonConfig = {
   baseUrl: 'https://saas.monitoring.viplive.nl/',
   specPattern: 'cypress/integration/Digidok/**/*.feature',
   excludeSpecPattern: ['*.{js,ts}', '**/ref/**/*.feature'],
+  //Once the caching issue is fixed perhaps we can enable experimentalRunAllSpecs again and use this with cypress open;
+  //https://github.com/cypress-io/cypress/issues/25416
+  // experimentalRunAllSpecs: true,
   retries: 0,
   watchForFileChanges: false,
   viewportWidth: 1920,
