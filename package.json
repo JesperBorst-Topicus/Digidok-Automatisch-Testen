@@ -1,14 +1,14 @@
 {
   "scripts": {
-    "cypress-open-digidok": "cypress open --browser chrome --config baseUrl=https://saas.monitoring.viplive.nl/"
+    "cypress-run-headed-digidok": "cypress run --headed --browser chrome"
   },
   "devDependencies": {
     "@cypress/webpack-preprocessor": "^5.15.7",
-    "cypress": "^12.1.0",
+    "cypress": "^12.17.3",
     "typescript": "^4.9.4"
   },
   "dependencies": {
-    "@badeball/cypress-cucumber-preprocessor": "^15.0.0",
+    "@badeball/cypress-cucumber-preprocessor": "^15.1.5",
     "ci": "^2.2.0",
     "cypress-network-idle": "^1.14.2",
     "ts-loader": "^9.4.2"

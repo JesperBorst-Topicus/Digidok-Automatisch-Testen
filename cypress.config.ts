@@ -8,6 +8,8 @@ const cypressJsonConfig = {
   supportFile: './cypress/support/index.ts',
   video: false,
   videosFolder: './videos',
+  baseUrl: 'https://saas.monitoring.viplive.nl/',
+  specPattern: 'cypress/integration/Digidok/**/*.feature',
   excludeSpecPattern: ['*.{js,ts}', '**/ref/**/*.feature'],
   retries: 0,
   watchForFileChanges: false,
