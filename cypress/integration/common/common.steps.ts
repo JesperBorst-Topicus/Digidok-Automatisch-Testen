@@ -25,7 +25,7 @@ Given('Gebruiker ziet {string} op de pagina', (text: string) => {
     cy.contains(text).should("be.visible");
 })
 
-Given('Gebruiker {string} start het behandeltraject', () => {
+Given('Gebruiker start het behandeltraject', () => {
     cy.contains('a', 'Cliënten').click();
 
     cy.fixture(`users/user`).then((userJson) => {

@@ -4,10 +4,6 @@ Given('Gebruiker navigeert naar de {string} pagina', (pagina: string) => {
     cy.visit(pagina);
 });
 
-Given('Gebruiker klikt op de Terug knop bij Digidok', () => {
+Given('Gebruiker klikt op de Terug knop', () => {
     cy.contains('button', 'TERUG').click();
-});
-
-Given('Gebruiker klikt op de Terug knop bij Consult', () => {
-    cy.get('[data-test="vragenlijst-back-button"]').click();
 });
