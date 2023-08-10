@@ -1,4 +1,5 @@
 import { Given } from '@badeball/cypress-cucumber-preprocessor';
+import 'cypress-network-idle';
 
 Given('Gebruiker vult {string} in bij de {string} vraag', (antwoord: string, vraagTitel: string) => {
     cy.contains(vraagTitel).should("be.visible");
@@ -39,5 +40,25 @@ Given('Gebruiker controleert het {string} antwoord bij de {string} vraag', (enke
 });
 
 Given('Gebruiker controleert de {string} vraag titel', (vraagTitel: string) => {
-    cy.get('app-vraag-tekst').contains(vraagTitel).should("be.visible");
+    cy.get('app-vraag-tekst',  { timeout: Cypress.env('digidok_vragenlijst_timeout') }).contains(vraagTitel).should("be.visible");
+});
+
+Given('Als de vraag {string} niet zichtbaar is, navigeer via de knop "Terug"', (vraagTitel: string) => {
+    var isJuisteVraag = false;
+    
+    while(!isJuisteVraag){
+        cy.waitForNetworkIdle(250);
+        
+        cy.get('app-vraag-tekst', { timeout: Cypress.env('digidok_vragenlijst_timeout') })
+            .invoke('text')
+            .then((textFromElement) => {
+                if (textFromElement.trim() != vraagTitel) {
+                    cy.contains('button', 'TERUG').click();
+                }
+                else
+                {
+                    isJuisteVraag = true;
+                }
+            });
+    }
 });

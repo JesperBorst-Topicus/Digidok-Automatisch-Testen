@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "@badeball/cypress-cucumber-preprocessor": "^15.0.0",
+    "ci": "^2.2.0",
+    "cypress-network-idle": "^1.14.2",
     "ts-loader": "^9.4.2"
   },
   "cypress-cucumber-preprocessor": {

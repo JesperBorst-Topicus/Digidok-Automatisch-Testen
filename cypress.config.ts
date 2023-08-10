@@ -15,6 +15,7 @@ const cypressJsonConfig = {
   viewportHeight: 1080,
   defaultCommandTimeout: 10000,
   env: {
+    "digidok_vragenlijst_timeout": 30000
   }
 };
 

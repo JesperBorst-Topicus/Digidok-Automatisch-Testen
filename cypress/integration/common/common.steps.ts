@@ -23,10 +23,28 @@ Given('Gebruiker pauzeert de test', () => {
     cy.pause()
 });
 
-Given('Gebruiker {string} start het behandeltraject', (gebruiker: string) => {
-    cy.fixture(`users/Digidok/${gebruiker}`).then((userJson) => {
-    cy.contains('h2', userJson.behandeltraject).find('button').invoke('attr', 'data-monitor-program-id').then((dataID) => {
+Given('Gebruiker {string} start het behandeltraject bij Digidok', (gebruiker: string) => {
+    cy.contains('a', 'Cliënten').click();
+
+    cy.fixture(`Digidok/users/${gebruiker}`).then((userJson) => {
+        cy.get('#combinedsearch').type(userJson.clientachternaam);
+        cy.get('#input-group-combinedsearch').within(() => {
+            cy.get('button').click();
+        });
+    });
+    
+    cy.fixture(`Digidok/users/${gebruiker}`).then((userJson) => {
+        cy.contains('h2', userJson.behandeltraject).find('button').invoke('attr', 'data-monitor-program-id').then((dataID) => {
             cy.visit(`/index.cfm?event=dspClientOverzichtQuickStart&monitorProgramID=${dataID}`);
         });
+    });
+    
+    cy.get('i[data-original-title="Deze meting direct afnemen"]').invoke('attr', 'onclick').then((onclick) => {
+        var metingId = onclick.substring(
+            onclick.indexOf("('") + 2,
+            onclick.indexOf("',")
+        );
+        cy.log(metingId.toString());
+        cy.visit(`https://meting.monitoring.viplive.nl/?metingId=${metingId}`)
     });
 });
