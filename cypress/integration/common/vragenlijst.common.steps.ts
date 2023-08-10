@@ -29,11 +29,6 @@ Given('Gebruiker kiest de {string} antwoorden bij de {string} vraag', (meerdereA
     }
 });
 
-Given('Gebruiker upload de {string} afbeelding bij de {string} vraag bij Consult', (bestand: string, vraagTitel: string) => {
-    cy.contains(vraagTitel).should("be.visible");
-    cy.get('input[id="mediaUpload"]').selectFile(`cypress/fixtures/Design/afbeeldingen/${bestand}`, { force: true });
-});
-
 Given('Gebruiker controleert het {string} antwoord bij de {string} vraag', (enkelAntwoord: string, vraagTitel: string) => {
     cy.contains(vraagTitel).should("be.visible");
     cy.get('app-keuze-optie').contains(enkelAntwoord).should("be.visible");
